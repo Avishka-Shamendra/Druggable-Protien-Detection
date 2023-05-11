@@ -9,7 +9,7 @@ import json
 import os
 from sklearn import metrics
 
-def plot_confusion_matrix(conf_mat, label_strings=None, title='Confusion matrix', cmap=plt.cm.get_cmap('Blues')):
+def plot_confusion_matrix(conf_mat, label_strings=None, title='Confusion matrix', cmap=plt.cm.get_cmap('Reds')):
     """Plot confusion matrix in a separate window"""
     plt.imshow(conf_mat, interpolation='nearest', cmap=cmap)
     plt.title(title)
@@ -23,7 +23,7 @@ def plot_confusion_matrix(conf_mat, label_strings=None, title='Confusion matrix'
     plt.xlabel('Predicted label')
 
 
-def generate_classification_report(class_names, precision, recall, f1_score, support, confusion_matrix_row_normalized,
+def gen_clf_report(class_names, precision, recall, f1_score, support, confusion_matrix_row_normalized,
                                    digits=3, top_thieves=2, max_char_length=35):
     """
     Generates a classification report based on the input metrics.
@@ -50,10 +50,10 @@ def generate_classification_report(class_names, precision, recall, f1_score, sup
     sorted_class_indices = np.argsort(rel_freq)[::-1]
 
     # Set up the report table.
-    last_row_heading = 'avg / total'
+    last_row_heading = 'Avg / Total'
     column_width = max(len(name) for name in class_names)
     column_width = max(column_width, len(last_row_heading), digits)
-    headers = ["precision", "recall", "f1-score", "rel. freq.", "abs. freq.", "biggest thieves"]
+    headers = ["precision", "recall", "f1-score", "relative-frequency", "absolute-frequency", "biggest-thieves"]
 
     # Format the table.
     fmt = '%% %ds' % column_width
@@ -175,24 +175,23 @@ def evaluate_classification(y_pred, y_true, class_names, max_char_length=35, pri
 
     # Print classification report
     if print_report:
-        print(generate_classification_report(existing_class_names, precision, recall, f1, support,
+        print(gen_clf_report(existing_class_names, precision, recall, f1, support,
                                              confusion_matrix_normalized_row))
 
     output = {
         "accuracy": total_accuracy,
-        "precision": precision.mean(),
-        "recall": recall.mean(),
-        "f1": f1.mean(),
         "sensitivity": recall[1],
-        "specificity": recall[0]
+        "specificity": recall[0],
+        "precision": precision.mean(),
+        "f1": f1.mean()
     }
 
     if save_outputs:
-        with open(os.path.join(save_outputs, "info_table.txt"), "w") as f:
-            f.write(generate_classification_report(existing_class_names, precision, recall, f1, support,
+        with open(os.path.join(save_outputs, "table.txt"), "w") as f:
+            f.write(gen_clf_report(existing_class_names, precision, recall, f1, support,
                                                    confusion_matrix_normalized_row))
 
-        with open(os.path.join(save_outputs, "metrics.json"), "w") as f:
+        with open(os.path.join(save_outputs, "report.json"), "w") as f:
             json.dump(output, f)
 
     return output
