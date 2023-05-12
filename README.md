@@ -11,4 +11,6 @@
 
 To train and test the dataset
 
-```python script.py ./dataset/TR_pos_SPIDER.txt ./dataset/TR_neg_SPIDER.txt ./dataset/TS_pos_SPIDER.txt ./dataset/TS_neg_SPIDER.txt```
+```
+python script.py ./dataset/TR_pos_SPIDER.txt ./dataset/TR_neg_SPIDER.txt ./dataset/TS_pos_SPIDER.txt ./dataset/TS_neg_SPIDER.txt
+```
