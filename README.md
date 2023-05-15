@@ -1,11 +1,26 @@
-## Setup the Environment
+## Prerequisites
+Python 3.9 or later
 
-1. Install python 3.9 or later
-2. Clone the repo
-3. Open through VS code
-4. Run ```python -m venv venv```
-5. Activate the environment
-6. pip install -r requirements.txt 
+## Setup a Vritual Environment
+
+1. Open a terminal or command prompt and run the following command to create a virtual environment named "venv":
+    ```
+    python -m venv venv
+    ```
+2. Activate the environment
+
+      Windows:
+        ```
+        venv\Scripts\activate
+        ```
+      Ubuntu/MacOS:
+        ```
+        source venv/bin/activate
+        ```
+4. Run
+    ``` 
+    pip install -r requirements.txt
+    ```
 
 ## Run
 
