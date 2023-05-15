@@ -1,4 +1,4 @@
-## Setup
+## Setup the Environment
 
 1. Install python 3.9 or later
 2. Clone the repo
