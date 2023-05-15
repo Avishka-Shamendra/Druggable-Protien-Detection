@@ -17,14 +17,14 @@ Python 3.9 or later
         ```
         source venv/bin/activate
         ```
-4. Run
+4. Once the virtual environment is activated, install the required dependencies by running the following command:
     ``` 
     pip install -r requirements.txt
     ```
 
 ## Run
 
-To train and test the dataset
+To train and test the dataset, execute the following command in your terminal or command prompt:
 
 ```
 python script.py ./dataset/TR_pos_SPIDER.txt ./dataset/TR_neg_SPIDER.txt ./dataset/TS_pos_SPIDER.txt ./dataset/TS_neg_SPIDER.txt
