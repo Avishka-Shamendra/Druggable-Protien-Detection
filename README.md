@@ -29,3 +29,7 @@ To train and test the dataset, execute the following command in your terminal or
 ```
 python script.py ./dataset/TR_pos_SPIDER.txt ./dataset/TR_neg_SPIDER.txt ./dataset/TS_pos_SPIDER.txt ./dataset/TS_neg_SPIDER.txt
 ```
+
+## Results
+
+Produce two text files named {predictions_pos.txt} and {predictions_neg.txt} containing the prediction results (1 if druggable or 0 if not) for the sequences in the test data files.
